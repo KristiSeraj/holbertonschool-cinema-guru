@@ -45,52 +45,24 @@ const MovieCard = ({ movie }) => {
 
     }, [movie]);
 
-
     const handleClick = async (type) => {
         const accessToken = localStorage.getItem('accessToken');
         if (accessToken) {
             if (type === 'favorite') {
                 if (isFavorite) {
-                    await axios.delete('http://localhost:8000/api/titles/favorite', {}, {
-                        headers: {
-                            'Authorization': `Bearer ${accessToken}`
-                        },
-                        params: {
-                            imdbId: movie.imdbId
-                        }
-                    });
+                    await axios.delete(`http://localhost:8000/api/titles/favorite/${movie.imdbId}`, {imdbId: movie.imdbId});
                     setIsFavorite(false);
                 } else {
-                    await axios.post('http://localhost:8000/api/titles/favorite', {}, {
-                        headers: {
-                            'Authorization': `Bearer ${accessToken}`
-                        },
-                        params: {
-                            imdbId: movie.imdbId
-                        }
-                    });
+                    await axios.post(`http://localhost:8000/api/titles/favorite/${movie.imdbId}`, {imdbId: movie.imdbId});
                     setIsFavorite(true);
                 }
-            } else if (type === 'watchlater') {
+            }
+            if (type === 'watchlater') {
                 if (isWatchLater) {
-                    await axios.delete('http://localhost:8000/api/titles/watchlater', {}, {
-                        headers: {
-                            'Authorization': `Bearer ${accessToken}`
-                        },
-                        params: {
-                            imdbId: movie.imdbId
-                        }
-                    });
+                    await axios.delete(`http://localhost:8000/api/titles/watchlater/${movie.imdbId}`, {imdbId: movie.imdbId});
                     setIsWatchLater(false);
                 } else {
-                    await axios.post('http://localhost:8000/api/titles/watchlater', {}, {
-                        headers: {
-                            'Authorization': `Bearer ${accessToken}`
-                        },
-                        params: {
-                            imdbId: movie.imdbId
-                        }
-                    });
+                    await axios.post(`http://localhost:8000/api/titles/watchlater/${movie.imdbId}`, {imdbId: movie.imdbId});
                     setIsWatchLater(true);
                 }
             }
@@ -100,6 +72,7 @@ const MovieCard = ({ movie }) => {
     const handleImageError = () => {
         setImageError(true);
     }
+    
     return (
         <div className='movieCard'>
             <ul className='movieCardList'>
