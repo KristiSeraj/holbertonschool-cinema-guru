@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Tag component START */
+.tagList {
+    display: flex;
+}
+
+.tagListElement {
+    color: #fff;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    border-radius: 15px;
+    border: 1px solid #E31C25;
+    width: fit-content;
+    padding: 5px 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.tagListElement:hover {
+    background-color: #E31C25;
+    cursor: pointer;
+}
+/* Tag component END */
+
+/* Filter component START */
+.filter input {
+    background-color: #2C2C2C;
+    color: #fff;
+}
+/* Filter component END */
+
+/* MovieCard component START */
+.movieCard {
+    width: 300px;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    background-color: #2C2C2C;
+    margin: 20px;
+}
+
+.movieCardList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.movieCard img {
+    width: 100%;
+}
+
+
+.movieCardList div {
+    position: relative;
+}
+
+.movieCardIcons {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px 5px;
+}
+
+.movieCardIcons2 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px 30px;
+}
+
+.movieTitle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.50);;
+    color: #fff;
+    font-size: 24px;
+}
+
+.movieSynopsis {
+    margin: 10px;
+}
+
+.genresContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.movieGenre {
+    display: flex;
+    border-radius: 15px;
+    padding: 5px 10px;
+    width: fit-content;
+    background-color: #E31C25;
+    margin: 15px 5px;
+}
+
+.movieGenre:hover {
+    cursor: pointer;
+}
+/* MovieCard component END */

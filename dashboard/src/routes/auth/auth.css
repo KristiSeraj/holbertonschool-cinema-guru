@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #222;
+}
+
+/* Authentication container START */
+.authContainer {
+    width: 50%;
+    margin: auto;
+}
+
+.formAuth {
+    width: 70%;
+    margin: 50px auto;
+    background-color: #FFF;
+}
+/* Authentication container END */
+
+
+/* Button section START */
+.btn {
+    padding: 10px 20px 10px 20px;
+    width: 50%;
+    height: 50px;
+}
+
+.active {
+    background-color: #E31C25;
+}
+
+.nonActive {
+    background-color: #BB000E;
+}
+
+.btnAuth {
+    display: block;
+    width: 140px;
+    margin: 40px 50px 10px auto;
+}
+/* Button section END */
+
+
+/* LOGIN and REGISTRATION section START */
+.registerContainer,
+.loginContainer {
+    font-family: 'Roboto', sans-serif;
+    padding: 20px;
+}
+.registerContainer input,
+.loginContainer input {
+    margin: 10px 50px;
+    width: 80%;
+}
+.registerContainer h2,
+.loginContainer h2 {
+    margin: 30px;
+    font-weight: normal;
+}
+.registerContainer label,
+.loginContainer label {
+    margin-left: 50px;
+    margin-top: 20px;
+    color: #222;
+}
+/* LOGIN and REGISTRATION section END */

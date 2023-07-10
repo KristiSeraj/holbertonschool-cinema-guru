@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+input {
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #BB000E;
+    display: block;
+}
+
+label {
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    display: block;
+    text-align: left;
+}
+
+button {
+    border: none;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.searchBar {
+    display: flex;
+    align-items: center;
+}
+
+input[type='search'] {
+    border-radius: 15px;
+    border: none;
+    padding: 10px 40px;
+    font-size: 16px;
+    width: 500px;
+}
+
+.searchBar label {
+    position: absolute;
+    left: 5rem;
+}
