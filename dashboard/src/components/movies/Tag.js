@@ -5,7 +5,8 @@ const Tag = ({ genre, filter, genres, setGenres }) => {
     const [selected, setSelected] = useState(false);
 
     const handleTag = () => {
-        if (selected === true) {
+        if (selected) {
+            const updatedGenre = 
             setGenres(genres[genre]);
             setSelected(false);
         } else {

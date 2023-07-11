@@ -1,22 +1,15 @@
 import React from 'react';
 import './components.css';
 
-const Activity = () => {
+const Activity = ({ items }) => {
+    const options = { month: 'long', day: 'numeric', year: 'numeric' };
     return (
         <div className='activityContainer'>
             <h1>Latest Activities</h1>
             <ul className='activityList'>
-                <li><p><span>Atef</span> added <span>The Murder House</span> to watch later - March 28, 2022</p></li>
-                <li><p><span>Atef</span> added <span>The Key</span> to watch later - March 28, 2022</p></li>
-                <li><p><span>Atef</span> added <span>The Murder House</span> to watch later - March 28, 2022</p></li>
-                <li><p><span>Atef</span> added <span>The Key</span> to watch later - March 28, 2022</p></li>
-                <li><p><span>Atef</span> added <span>The Murder House</span> to watch later - March 28, 2022</p></li>
-                <li><p><span>Atef</span> added <span>The Key</span> to watch later - March 28, 2022</p></li>
-                <li><p><span>Atef</span> added <span>The Murder House</span> to watch later - March 28, 2022</p></li>
-                <li><p><span>Atef</span> added <span>The Key</span> to watch later - March 28, 2022</p></li>
-                <li><p><span>Atef</span> added <span>The Murder House</span> to watch later - March 28, 2022</p></li>
-                <li><p><span>Atef</span> added <span>The Key</span> to watch later - March 28, 2022</p></li>
-                <li><p><span>Atef</span> added <span>The Murder House</span> to watch later - March 28, 2022</p></li>
+                {items.slice(0, 10).map(item => (
+                    <li><p><span>{item.user.username}</span> added <span>{item.title.title}</span> to {item.activityType} - {new Date(item.updatedAt).toLocaleDateString(undefined, options)}</p></li>
+                ))}
             </ul>
         </div>
     )

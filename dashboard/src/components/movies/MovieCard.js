@@ -50,14 +50,14 @@ const MovieCard = ({ movie }) => {
         if (accessToken) {
             if (type === 'favorite') {
                 if (isFavorite) {
-                    await axios.delete(`http://localhost:8000/api/titles/favorite/${movie.imdbId}`, {imdbId: movie.imdbId}, {
+                    await axios.delete(`http://localhost:8000/api/titles/favorite/${movie.imdbId}`, {}, {
                         headers: {
                             'Authorization': `Bearer ${accessToken}`
                         }
                     });
                     setIsFavorite(false);
                 } else {
-                    await axios.post(`http://localhost:8000/api/titles/favorite/${movie.imdbId}`, {imdbId: movie.imdbId}, {
+                    await axios.post(`http://localhost:8000/api/titles/favorite/${movie.imdbId}`, {}, {
                         headers: {
                             'Authorization': `Bearer ${accessToken}`
                         }
@@ -67,14 +67,14 @@ const MovieCard = ({ movie }) => {
             }
             if (type === 'watchlater') {
                 if (isWatchLater) {
-                    await axios.delete(`http://localhost:8000/api/titles/watchlater/${movie.imdbId}`, {imdbId: movie.imdbId}, {
+                    await axios.delete(`http://localhost:8000/api/titles/watchlater/${movie.imdbId}`, {}, {
                         headers: {
                             'Authorization': `Bearer ${accessToken}`
                         }
                     });
                     setIsWatchLater(false);
                 } else {
-                    await axios.post(`http://localhost:8000/api/titles/watchlater/${movie.imdbId}`, {imdbId: movie.imdbId}, {
+                    await axios.post(`http://localhost:8000/api/titles/watchlater/${movie.imdbId}`, {}, {
                         headers: {
                             'Authorization': `Bearer ${accessToken}`
                         }
@@ -111,7 +111,7 @@ const MovieCard = ({ movie }) => {
                     </li>
                 </div>
                 <li className='movieSynopsis'>
-                    {movie.synopsis}
+                    {movie.synopsis || 'Not available'}
                 </li>
                 <ul className='genresContainer'>
                     {movie.genres.map(genre => <li className='movieGenre'>{genre}</li>)}

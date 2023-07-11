@@ -59,7 +59,7 @@ const SideBar = () => {
     const styleSelected = (location) => {
         return selected === location ? '#E31C25' : ''
     }
-
+    console.log(activities);
     return (
         <nav className={`dashboardMenu ${small ? 'small' : ''}`} onMouseOver={expandSidebar} onMouseOut={collapseSidebar}>
                 <div style={dashSmall}>
@@ -82,7 +82,7 @@ const SideBar = () => {
                                 {watchIcon} Watch Later
                             </li>
                         </ul>
-                        <Activity />
+                        <Activity items={activities} />
                     </div>
                 )}
         </nav>
