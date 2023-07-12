@@ -4,11 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faClock } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import cinemaImg from '../../assets/cinemaimg.png';
+import Image from './Image';
 
 const MovieCard = ({ movie }) => {
     const [isFavorite, setIsFavorite] = useState(false);
     const [isWatchLater, setIsWatchLater] = useState(false);
-    const [imageError, setImageError] = useState(false);
+    // const [imageError, setImageError] = useState(false);
 
     const favIcon = <FontAwesomeIcon icon={faStar} />
     const watchIcon = <FontAwesomeIcon icon={faClock} />
@@ -28,7 +29,6 @@ const MovieCard = ({ movie }) => {
                             'Authorization': `Bearer ${accessToken}`
                         }
                     });
-
                     const favoriteMovies = favoriteResponse.data;
                     const watchLaterMovies = watchLaterResponse.data;
                     
@@ -50,7 +50,7 @@ const MovieCard = ({ movie }) => {
         if (accessToken) {
             if (type === 'favorite') {
                 if (isFavorite) {
-                    await axios.delete(`http://localhost:8000/api/titles/favorite/${movie.imdbId}`, {}, {
+                    await axios.delete(`http://localhost:8000/api/titles/favorite/${movie.imdbId}`, {
                         headers: {
                             'Authorization': `Bearer ${accessToken}`
                         }
@@ -64,10 +64,9 @@ const MovieCard = ({ movie }) => {
                     });
                     setIsFavorite(true);
                 }
-            }
-            if (type === 'watchlater') {
+            } else if (type === 'watchlater') {
                 if (isWatchLater) {
-                    await axios.delete(`http://localhost:8000/api/titles/watchlater/${movie.imdbId}`, {}, {
+                    await axios.delete(`http://localhost:8000/api/titles/watchlater/${movie.imdbId}`, {
                         headers: {
                             'Authorization': `Bearer ${accessToken}`
                         }
@@ -85,26 +84,27 @@ const MovieCard = ({ movie }) => {
         }
     }
 
-    const handleImageError = () => {
-        setImageError(true);
-    }
+    // const handleImageError = () => {
+    //     setImageError(!imageError);
+    // }
     
     return (
         <div className='movieCard'>
             <ul className='movieCardList'>
                 <div>
-                    <li onClick={() => handleClick("favorite")} className='movieCardIcons'>
+                    <li style={{ color: isFavorite ? 'red' : 'white' }} onClick={() => handleClick("favorite")} className='movieCardIcons'>
                         {favIcon}
                     </li>
-                    <li onClick={() => handleClick("watchlater")} className='movieCardIcons2'>
+                    <li style={{ color: isWatchLater ? 'red' : 'white' }} onClick={() => handleClick("watchlater")} className='movieCardIcons2'>
                         {watchIcon}
                     </li>
                     <li>
-                        {imageError ? (
+                        {/* {imageError ? (
                             <img src={cinemaImg} alt='cinemaImg' />
                         ) : (
-                            <img src={movie.imageurls[0]} alt='Movie cover' onError={handleImageError}/>
-                        )}
+                            <img src={movie.imageurls[0]} alt='Movie cover' onError={handleImageError} />
+                        )} */}
+                        <Image imageUrl={movie.imageurls[0]} fallBackUrl={cinemaImg} />
                     </li>
                     <li className='movieTitle'>
                         {movie.title}
@@ -114,7 +114,7 @@ const MovieCard = ({ movie }) => {
                     {movie.synopsis || 'Not available'}
                 </li>
                 <ul className='genresContainer'>
-                    {movie.genres.map(genre => <li className='movieGenre'>{genre}</li>)}
+                    {movie.genres.map((genre, index) => <li key={index} className='movieGenre'>{genre}</li>)}
                 </ul>
             </ul>
         </div>

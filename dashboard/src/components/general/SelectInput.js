@@ -9,7 +9,7 @@ const SelectInput = ({ label, options, className, value, setValue, Multiple }) =
         <>
             {label && <label>{label}</label>}
             <select className={className} onChange={handleSelect} multiple={Multiple}>
-                {options.map((option) => <option value={value}>{option}</option>)}
+                {options.map((option, index) => <option key={index} value={value}>{option}</option>)}
             </select>
         </>
     )

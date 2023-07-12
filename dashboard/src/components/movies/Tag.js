@@ -6,11 +6,11 @@ const Tag = ({ genre, filter, genres, setGenres }) => {
 
     const handleTag = () => {
         if (selected) {
-            const updatedGenre = 
-            setGenres(genres[genre]);
+            const updatedGenre = genres.filter((g) => g !== genre)
+            setGenres(updatedGenre);
             setSelected(false);
         } else {
-            setGenres(genres[genre]);
+            setGenres([...genres, genre]);
             setSelected(true);
         }
     }

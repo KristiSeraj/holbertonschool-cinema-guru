@@ -15,7 +15,7 @@ const Filter = ({ minYear, setMinYear, maxYear, setMaxYear, sort, setSort, genre
             <Input label={'Min Date:'} type={'number'} value={minYear} setValue={setMinYear} />
             <Input label={'Max Date:'} type={'number'} value={maxYear} setValue={setMaxYear} />
             <SelectInput label={'Sort:'} value={sort} setValue={setSort} Multiple={false} options={['Latest', 'Oldest', 'Highest rated', 'Lowest rated']} />
-            <div className='tagList'>{arrayOfGenres.map((tag) => <Tag genre={tag} setGenres={setGenres} filter={genres} /> )}</div>
+            <div className='tagList'>{arrayOfGenres.map((tag, index) => <Tag key={index} genres={genres} genre={tag} setGenres={setGenres} /> )}</div>
         </div>
     );
 }

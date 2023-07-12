@@ -14,9 +14,9 @@ const HomePage = () => {
     const [title, setTitle] = useState("");
     const [page, setPage] = useState(1);
 
-    // useEffect(() => {
-    //     loadMovies(page)
-    // });
+    useEffect(() => {
+        loadMovies(page)
+    });
     
     const loadMovies = async (page) => {
         const accessToken = localStorage.getItem('accessToken');
@@ -28,12 +28,12 @@ const HomePage = () => {
                 params: {
                     minYear: minYear,
                     maxYear: maxYear,
-                    genres: genres,
+                    genres: genres.join(','),
                     title: title,
                     page: page,
                     sort: sort
                 }
-            });
+            })
             const newMovies = response.data.titles;
             setMovies(newMovies)
         }
@@ -45,7 +45,7 @@ const HomePage = () => {
         loadMovies(nextPage);
         setPage(nextPage);
     }
-
+    
     return (
         <div className='homepage'>
             <Filter minYear={minYear} setMinYear={setMinYear}
@@ -54,10 +54,11 @@ const HomePage = () => {
                     genres={genres} setGenres={setGenres}
                     title={title} setTitle={setTitle}
             />
-            {movies.map((movie) => ( 
-                <MovieCard key={movie.id} movie={movie} />)
-                )
-            }
+            <div className='movieContainer'>
+                {movies.map((movie) => (
+                    <MovieCard key={movie.id} movie={movie} />
+                ))}
+            </div>
             <Button text={"Load More.."} onClick={handleLoadMore} className={'loadBtn'}/>
         </div>
     );

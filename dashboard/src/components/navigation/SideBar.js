@@ -6,7 +6,7 @@ import Activity from '../Activity';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolder, faStar, faClock } from '@fortawesome/free-solid-svg-icons';
 
-const SideBar = () => {
+const SideBar = ({user}) => {
     const [selected, setSelected] = useState("Home");
     const [small, setSmall] = useState(true);
     const [activities, setActivities] = useState([]);
@@ -59,7 +59,7 @@ const SideBar = () => {
     const styleSelected = (location) => {
         return selected === location ? '#E31C25' : ''
     }
-    console.log(activities);
+
     return (
         <nav className={`dashboardMenu ${small ? 'small' : ''}`} onMouseOver={expandSidebar} onMouseOut={collapseSidebar}>
                 <div style={dashSmall}>
@@ -82,7 +82,7 @@ const SideBar = () => {
                                 {watchIcon} Watch Later
                             </li>
                         </ul>
-                        <Activity items={activities} />
+                        <Activity items={activities} user={user}/>
                     </div>
                 )}
         </nav>

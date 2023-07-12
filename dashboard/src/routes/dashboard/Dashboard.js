@@ -12,7 +12,7 @@ const Dashboard = ({ userUsername, setIsLoggedIn }) => {
         <BrowserRouter>
             <div>
                 <Header userUsername={userUsername} setIsLoggedIn={setIsLoggedIn} />
-                <SideBar />
+                <SideBar user={userUsername} />
             </div>
             <Routes>
                 <Route path='/' element={<HomePage />} />

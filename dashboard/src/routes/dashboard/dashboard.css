@@ -1,7 +1,11 @@
-
 .loadBtn {
     background-color: #E31C25;
     width: 150px;
     padding: 10px 5px;
     cursor: pointer;
+}
+
+.movieContainer {
+    display: flex;
+    flex-wrap: wrap;
 }
